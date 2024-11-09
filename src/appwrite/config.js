@@ -123,6 +123,14 @@ export class Service{
             return false
         }
     }
+    async checkAuth() {
+        try {
+            await this.account.get(); // Tries to get the current logged-in user
+            return true; // User is logged in
+        } catch (error) {
+            return false; // User is not logged in
+        }
+    }
 
     getFilePreview(fileId){
         return this.bucket.getFilePreview(
@@ -130,6 +138,7 @@ export class Service{
             fileId
         )
     }
+
 }
 
 
